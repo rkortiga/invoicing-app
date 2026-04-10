@@ -1,0 +1,44 @@
+{
+    // Runs the Vite dev server and keeps it alive while debugging.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "npm run dev",
+            "type": "npm",
+            "script": "dev",
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                {
+                    "owner": "vite",
+                    "fileLocation": ["relative", "${workspaceFolder}"],
+                    "pattern": {
+                        "regexp": "^\\s*(?<file>[^:]+):(\\d+):(\\d+)\\s*-\\s*(?<message>.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "message": 4
+                    },
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".*ready in.*",
+                        "endsPattern": ".*(http:|Local:).*"
+                    }
+                }
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "terminate npm run dev",
+            "type": "npm",
+            "script": "kill-dev",
+            "problemMatcher": []
+        }
+    ]
+}
